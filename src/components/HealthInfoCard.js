@@ -2,7 +2,7 @@ import * as React from 'react';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import { Box } from '@mui/system';
 
-function Card() {
+function HealthInfoCard({patientID}) {
   return (
     <Box
       sx={{
@@ -37,4 +37,4 @@ function Card() {
   );
 }
 
-export default Card;
+export default HealthInfoCard;

@@ -229,22 +229,6 @@ export default function Header({patientView, setPatientView, doctorView, setDoct
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {/* TODO: Change color of button and button text based on whether patientView is selected or not */}
             <>{toggleButton}</>
-            {/* <ToggleButton
-                color={'secondary'}
-                selected={patientView}
-                onChange={() => {
-                    setPatientView(!patientView);
-                }}
-            >
-              <Typography
-                variant="h7"
-                noWrap
-                component="div"
-                sx={{ color: 'white', display: { xs: 'none', sm: 'block' } }}
-              >
-                PatientView
-              </Typography>
-            </ToggleButton> */}
 
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">

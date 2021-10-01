@@ -1,9 +1,9 @@
 import React from 'react';
 
-function HealthInfo() {
+function HealthInfo({patientID}) {
     return (
         <div>
-            
+            Health Info
         </div>
     )
 }

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import './App.css';
 import Header from './components/Header';
-import Container from './components/Container';
+import Container from '@mui/material/Container';
 import PatientInfo from './components/PatientInfo';
 import HealthInfo from './components/HealthInfo';
-import PersonalInfo from './components/PersonalInfo';
+// import PersonalInfo from './components/PersonalInfo';
 
 function App() {
   const [patientView, setPatientView] = React.useState(false);
@@ -12,15 +12,16 @@ function App() {
   
   let mainDisplay = <></>;
   if(doctorView){
-    mainDisplay = <PatientInfo
-      doctorID={"d2"}
-    ></PatientInfo>;
+    mainDisplay = 
+      <PatientInfo
+        doctorID={"d2"}
+      />;
   } else {
-    mainDisplay = <HealthInfo
-      doctorID={"d2"}
-    ></HealthInfo>;
+    mainDisplay = 
+      <HealthInfo
+        doctorID={"d2"}
+      />;
   }
-
 
   return (
     <div className="App">
@@ -31,7 +32,7 @@ function App() {
         setDoctorView={setPatientView}
       />
       <Container>
-
+        <>{mainDisplay}</>
       </Container>
     </div>
   );
