@@ -4,11 +4,13 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
+import { ToggleButton } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
@@ -56,7 +58,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+// my functions
+
+export default function Header({patientView, setPatientView, doctorView, setDoctorView}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -81,6 +85,32 @@ export default function PrimarySearchAppBar() {
   };
 
   const menuId = 'primary-search-account-menu';
+  let secondProfileOption = ' '; // if the patientView is displayed the second menu item will be the health info of the patient
+      if(doctorView){
+        secondProfileOption = 'My Patients';
+        
+      } else {
+        secondProfileOption = 'My Health Info';
+      }
+  let toggleButton = <></>;
+  if(doctorView) {
+    toggleButton = <ToggleButton
+                      color={'secondary'}
+                      selected={patientView}
+                      onChange={() => {
+                          setPatientView(!patientView);
+                      }}
+                    > 
+                    <Typography
+                      variant="h7"
+                      noWrap
+                      component="div"
+                      sx={{ color: 'white', display: { xs: 'none', sm: 'block' } }}
+                    >
+                        Patient View
+                      </Typography>
+                    </ToggleButton>
+  }
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -97,11 +127,12 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Personal Information</MenuItem>
+      <MenuItem onClick={handleMenuClose}>{secondProfileOption}</MenuItem>
     </Menu>
   );
 
+  // TODO: Fix this so that it's dynamic
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -120,13 +151,18 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+        <IconButton
+            size="large"
+            aria-label="show 4 new mails"
+            color="inherit"
+        >
           <Badge badgeContent={4} color="error">
-            <MailIcon />
+            <MailIcon /> {/* TODO: change this icon to a message box maybe*/}
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Messages</p> {/* This is a label for the mobile view*/}
       </MenuItem>
+
       <MenuItem>
         <IconButton
           size="large"
@@ -134,11 +170,12 @@ export default function PrimarySearchAppBar() {
           color="inherit"
         >
           <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
+            <NotificationsIcon /> {/* TODO: Does this need to be here we could have a card instead with notifications */}
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>Notifications</p> {/* This is a label for the mobile view*/}
       </MenuItem>
+
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -147,18 +184,18 @@ export default function PrimarySearchAppBar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <AccountCircle /> 
         </IconButton>
-        <p>Profile</p>
+        <p>Profile</p> {/* This is a label for the mobile view*/}
       </MenuItem>
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{bgcolor: 'success.dark'}}>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -166,15 +203,17 @@ export default function PrimarySearchAppBar() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
+
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Health Web App
           </Typography>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -184,8 +223,29 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+
           <Box sx={{ flexGrow: 1 }} />
+
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            {/* TODO: Change color of button and button text based on whether patientView is selected or not */}
+            <>{toggleButton}</>
+            {/* <ToggleButton
+                color={'secondary'}
+                selected={patientView}
+                onChange={() => {
+                    setPatientView(!patientView);
+                }}
+            >
+              <Typography
+                variant="h7"
+                noWrap
+                component="div"
+                sx={{ color: 'white', display: { xs: 'none', sm: 'block' } }}
+              >
+                PatientView
+              </Typography>
+            </ToggleButton> */}
+
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
