@@ -7,8 +7,8 @@ export default function SimpleContainer() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="sm">
-        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} />
+      <Container maxWidth="lg">
+        <Box sx={{ bgcolor: 'red', height: '200vh' }} />
       </Container>
     </React.Fragment>
   );

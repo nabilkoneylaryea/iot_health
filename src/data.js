@@ -1,6 +1,5 @@
 patients = {
     'p1' : {
-        
         name: 'Parveen',
         age: 29,
         weight: 155,
@@ -8,7 +7,13 @@ patients = {
         address: '12345 myAddress ln., Gainesville, Fl, 12345',
         emergencyContactName: 'Mom',
         emergencyContactNumber: '123-456-7890',
-        doctorIDs: ['d2',]
+        doctorIDs: ['d2'],
+
+        // cloud variables
+        temp: 98.6,
+        ecg: 1,
+        bpm: 78,
+        hasFallen: false
     },
     'p2' : {
         
@@ -19,7 +24,13 @@ patients = {
         address: '12345 myAddress ln., Gainesville, Fl, 12345',
         emergencyContactName: 'Mom',
         emergencyContactNumber: '123-456-7890',
-        doctorIDs: ['d1',]
+        doctorIDs: ['d1'],
+
+        // cloud variables
+        temp: 93,
+        ecg: 1,
+        bpm: 70,
+        hasFallen: false
     },
     'p3' : {
         
@@ -30,7 +41,13 @@ patients = {
         address: '12345 myAddress ln., Gainesville, Fl, 12345',
         emergencyContactName: 'Mom',
         emergencyContactNumber: '123-456-7890',
-        doctorIDs: ['d2',]
+        doctorIDs: ['d2'],
+
+        // cloud variables
+        temp: 96.7,
+        ecg: 1,
+        bpm: 60,
+        hasFallen: false
     },
     'p4' : {
         
@@ -41,18 +58,30 @@ patients = {
         address: '12345 myAddress ln., Gainesville, Fl, 12345',
         emergencyContactName: 'Mom',
         emergencyContactNumber: '123-456-7890',
-        doctorIDs: ['d3']
+        doctorIDs: ['d3'],
+
+        // cloud variables
+        temp: 99,
+        ecg: 1,
+        bpm: 112,
+        hasFallen: false
     },
     'p5' : {
         
         name: 'Lakshmi',
-        age: 15,
+        age: 77,
         weight: 155,
         height: 3.1,
         address: '12345 myAddress ln., Gainesville, Fl, 12345',
-        emergencyContactName: 'Mom',
+        emergencyContactName: 'Daughter',
         emergencyContactNumber: '123-456-7890',
-        doctorIDs: ['d2']
+        doctorIDs: ['d2'],
+
+        // cloud variables
+        temp: 97.2,
+        ecg: 1,
+        bpm: 101,
+        hasFallen: true
     },
     'p6' : {
         
@@ -63,7 +92,13 @@ patients = {
         address: '1006 awesome dr., Gainesville, Fl, 32601',
         emergencyContactName: 'Mom',
         emergencyContactNumber: '727-505-0936',
-        doctorIDs: ['d1', 'd2',]
+        doctorIDs: ['d1', 'd2'],
+
+        // cloud variables
+        temp: 98.6,
+        ecg: 1,
+        bpm: 78,
+        hasFallen: false
     },
     'p7' : {
         name: 'Jean',
@@ -73,10 +108,17 @@ patients = {
         address: '12345 myAddress ln., Gainesville, Fl, 12345',
         emergencyContactName: 'Mom',
         emergencyContactNumber: '123-456-7890',
-        doctorIDs: ['d3']
+        doctorIDs: ['d3'],
+
+        // cloud variables
+        temp: 98.6,
+        ecg: 1,
+        bpm: 90,
+        hasFallen: true
     }
 }
 
+// add in stuff for doctor's calendars
 doctors = {
     'd1' : {
         name: 'Eka',

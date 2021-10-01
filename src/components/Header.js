@@ -95,21 +95,21 @@ export default function Header({patientView, setPatientView, doctorView, setDoct
   let toggleButton = <></>;
   if(doctorView) {
     toggleButton = <ToggleButton
-                      color={'secondary'}
-                      selected={patientView}
-                      onChange={() => {
-                          setPatientView(!patientView);
-                      }}
-                    > 
-                    <Typography
-                      variant="h7"
-                      noWrap
-                      component="div"
-                      sx={{ color: 'white', display: { xs: 'none', sm: 'block' } }}
-                    >
-                        Patient View
-                      </Typography>
-                    </ToggleButton>
+    color={'secondary'}
+    selected={patientView}
+    onChange={() => {
+        setPatientView(!patientView);
+    }}
+    > 
+    <Typography
+      variant="h7"
+      noWrap
+      component="div"
+      sx={{ color: 'white', display: { xs: 'none', sm: 'block' } }}
+    >
+        Patient View
+      </Typography>
+    </ToggleButton>
   }
   const renderMenu = (
     <Menu
