@@ -1,0 +1,31 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "IOT Health web app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix client",
+    "dev": "concurently \"npm run server \" \"npm run client\"",
+    "client-install": "npm install --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabilkoneylaryea/iot_health.git"
+  },
+  "keywords": [],
+  "author": "Nabil Koney-Laryea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nabilkoneylaryea/iot_health/issues"
+  },
+  "homepage": "https://github.com/nabilkoneylaryea/iot_health#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "concurrently": "^6.3.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.8"
+  }
+}
