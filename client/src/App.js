@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Container from '@mui/material/Container';
 import PatientInfo from './components/PatientInfo';
 import HealthInfo from './components/HealthInfo';
-// import PersonalInfo from './components/PersonalInfo';
+import patients from './patients';
 
 function App() {
   const [patientView, setPatientView] = React.useState(false);
@@ -19,7 +19,7 @@ function App() {
   } else {
     mainDisplay = 
       <HealthInfo
-        doctorID={"d2"}
+        patient={patients["p6"]}
       />;
   }
 
