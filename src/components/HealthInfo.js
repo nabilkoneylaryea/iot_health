@@ -3,7 +3,7 @@ import React from 'react';
 function HealthInfo({patient}) {
     return (
         <div>
-            Health Info
+            {patient.name}'s Health Info
         </div>
     )
 }

@@ -14,7 +14,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 
@@ -157,7 +157,7 @@ export default function Header({patientView, setPatientView, doctorView, setDoct
             color="inherit"
         >
           <Badge badgeContent={4} color="error">
-            <MailIcon /> {/* TODO: change this icon to a message box maybe*/}
+            <ChatBubbleIcon /> {/* TODO: change this icon to a message box maybe*/}
           </Badge>
         </IconButton>
         <p>Messages</p> {/* This is a label for the mobile view*/}
@@ -232,7 +232,7 @@ export default function Header({patientView, setPatientView, doctorView, setDoct
 
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
-                <MailIcon />
+                <ChatBubbleIcon />
               </Badge>
             </IconButton>
             <IconButton

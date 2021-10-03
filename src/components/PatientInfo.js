@@ -13,6 +13,7 @@ import doctors from '../doctors';
 function PatientsDropdown(patients) {
   const [expanded, setExpanded] = React.useState(false);
 
+  // TODO: look up how this doubel arrow function thing works
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -58,7 +59,7 @@ function PatientsDropdown(patients) {
 
         <AccordionDetails>
           <Typography>
-            Health info grid here
+            <HealthInfo patient={patient}/>
           </Typography>
         </AccordionDetails>
     </Accordion>);
@@ -87,7 +88,7 @@ function PatientInfo({doctorID}) {
                 component="div"
                 sx={{ display: { xs: 'none', sm: 'inline' } }}
             >
-                Patient Info
+                My Patients
             </Typography>
             <>{PatientsDropdown(doctorsPatients)}</>
         </div>
