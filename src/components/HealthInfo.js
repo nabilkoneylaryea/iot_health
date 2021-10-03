@@ -1,6 +1,6 @@
 import React from 'react';
 
-function HealthInfo({patientID}) {
+function HealthInfo({patient}) {
     return (
         <div>
             Health Info
