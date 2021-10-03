@@ -95,9 +95,9 @@ const patients = {
         doctorIDs: ['d1', 'd2'],
 
         // cloud variables
-        temp: 98.6,
+        temp: 100,
         ecg: 1,
-        bpm: 78,
+        bpm: 140,
         hasFallen: false
     },
     'p7' : {

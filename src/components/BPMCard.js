@@ -2,17 +2,24 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import ThermostatIcon from '@mui/icons-material/Thermostat';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
+import TrendingFlatOutlinedIcon from '@mui/icons-material/TrendingFlatOutlined';
+import TrendingDownOutlinedIcon from '@mui/icons-material/TrendingDownOutlined';
+
+
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 
-const TemperatureCard = ({temperature}) => {
-  console.log(temperature);
-  let temperatureIcon = <></>;
-  if(temperature < 98.6){
-    temperatureIcon = <AcUnitIcon />;
-  } else if (temperature > 98.6) {
-    temperatureIcon = <LocalFireDepartmentIcon />;
+const BPMCard = ({bpm}) => {
+  console.log(bpm);
+  let bpmIcon = <></>;
+  if(bpm < 90){
+    bpmIcon = <>Slow<TrendingDownOutlinedIcon /></>;
+  } else if (bpm > 120) {
+    bpmIcon = <>Fast<TrendingUpOutlinedIcon /></>;
+  } else {
+    bpmIcon = <>Average<TrendingFlatOutlinedIcon /></>;
   }
 
   return(
@@ -20,7 +27,7 @@ const TemperatureCard = ({temperature}) => {
         <Grid container spacing={2}>
           {/* icon */}
           <Grid item>
-            <ThermostatIcon />
+            <FavoriteBorderOutlinedIcon />
           </Grid>
 
           {/* information */}
@@ -28,24 +35,23 @@ const TemperatureCard = ({temperature}) => {
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1" component="div">
-                  Temperature
+                  BPM
                 </Typography>
               </Grid>
 
               <Grid item>
                 <Typography sx={{display: 'inline', mx: 2}} variant="h1">
-                  {temperature} {/* Find a better way to put degrees symbol in*/}
+                  {bpm} {/* Find a better way to put degrees symbol in*/}
                 </Typography>
-
-                <Typography sx={{display: 'inline', color: 'text.secondary'}} variant="h5">
-                  ℉ {/* Find a better way to put degrees symbol in*/}
-                </Typography>
+                {/* <Typography sx={{color: 'text.secondary'}} variant="caption">
+                    beats per minute
+                </Typography> */}
               </Grid>
             </Grid>
 
             <Grid item>
               <Typography variant="subtitle1" component="div">
-                {temperatureIcon}
+                {bpmIcon}
               </Typography>
             </Grid>
           </Grid>
@@ -55,4 +61,4 @@ const TemperatureCard = ({temperature}) => {
   )
 }
 
-export default TemperatureCard;
+export default BPMCard;

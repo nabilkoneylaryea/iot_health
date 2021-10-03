@@ -83,10 +83,8 @@ function PatientInfo({doctorID}) {
     return (
         <div>
             <Typography
-                variant="h6"
-                noWrap
-                component="div"
-                sx={{ display: { xs: 'none', sm: 'inline' } }}
+                gutterBottom
+                variant="h3"
             >
                 My Patients
             </Typography>
