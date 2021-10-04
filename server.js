@@ -2,8 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import asyncHandler from 'express-async-handler';
-import patientsRouter from './server/routes/patients.js';
-import doctorsRouter from './server/routes/doctors.js';
+import patientsRouter from './server/routes/patientRouter.js';
+import doctorsRouter from './server/routes/doctorRouter.js';
 // import cors from 'cors';
 
 /*

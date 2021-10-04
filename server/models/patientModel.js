@@ -18,4 +18,4 @@ const patientSchema = new mongoose.Schema({
     hasFallen: Boolean
 });
 
-export default patientModel = mongoose.model('patient', patientSchema);
+export default mongoose.model('patient', patientSchema);

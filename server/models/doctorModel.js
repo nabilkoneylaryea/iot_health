@@ -7,4 +7,4 @@ const doctorSchema = new mongoose.Schema({
     patientIDs: String
 });
 
-export default doctorModel = mongoose.model('doctor', doctorSchema);
+export default mongoose.model('doctor', doctorSchema);

@@ -1,4 +1,4 @@
-import patientModel from '../models/patient.js';
+import patientModel from '../models/patientModel.js';
 import asyncHandler from 'express-async-handler';
 
 //getPatients function to get all users
