@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express';
+import {getDoctors, getDoctorById} from '../controllers/doctorControllers.js';
 const router = express.Router();
 
 // middleware that is specific to this router
@@ -16,12 +17,8 @@ const router = express.Router();
 //   res.send('Doctor id')
 // })
 
-router.route('/').get((req, res) => {
-    res.send('Patients homepage')
-});
+router.route('/').get();
 
-router.route('/:id').get((req, res) => {
-    res.send('Patient id')
-});
+router.route('/:id').get();
 
-module.exports = router;
+export default router;

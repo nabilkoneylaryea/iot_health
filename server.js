@@ -1,25 +1,16 @@
-// import http from 'http';
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import asyncHandler from 'express-async-handler';
+import patientsRouter from './server/routes/patients.js';
+import doctorsRouter from './server/routes/doctors.js';
 // import cors from 'cors';
-const mongoose = require('mongoose');
 
-// routers
-const patientsRouter = require('./server/routes/patients');
-const doctorsRouter = require('./server/routes/doctors');
-
-// import MongoClient from 'mongodb';
-
-// const uri = "mongodb+srv://admin:admin@cluster0.bdcd0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
-// const connectDB = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-// client.connect(err => {
-//   const doctorsCollection = client.db("Users").collection("doctors");
-//   // perform actions on the collection object
-//   const patientsCollection = client.db("Users").collection("patients");
-//   client.close();
-// });
-
+/*
+ * Database name: Users
+ * Collection 1: doctors
+ * Collection 2: patients
+ */
 const DB = "mongodb+srv://admin:admin@cluster0.bdcd0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
 
@@ -39,6 +30,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.get('/', function (req, res) {
   res.send('Hello World!')
 })
+
 // routers
 server.use('/patients', patientsRouter);
 server.use('/doctors', doctorsRouter);

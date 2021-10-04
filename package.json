@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "IOT Health web app",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix client",
-    "server": "nodemon --exec npm start",
+    "server": "node --input-type module server.js",
     "dev": "concurently \"npm run server \" \"npm run client\"",
     "client-install": "npm install --prefix client"
   },
@@ -28,6 +29,7 @@
     "body-parser": "^1.19.0",
     "concurrently": "^6.3.0",
     "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
     "mongoose": "^6.0.8"
   }
 }

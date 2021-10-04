@@ -1,4 +1,9 @@
-const express = require('express');
+// const express = require('express');
+// const router = express.Router();
+// const getPatients = require('../controllers/patientControllers')
+
+import express from 'express';
+import {getPatients, getPatientById} from '../controllers/patientControllers.js';
 const router = express.Router();
 
 // middleware that is specific to this router
@@ -24,4 +29,4 @@ router.route('/:id').get((req, res) => {
     res.send('Patient id')
 });
 
-module.exports = router;
+export default router;
