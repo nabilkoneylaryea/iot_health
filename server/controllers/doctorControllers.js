@@ -3,7 +3,7 @@ import asyncHandler from 'express-async-handler';
 
 //getDoctors function to get all users
 export const getDoctors = asyncHandler(async(req, res) => {
-    console.log("Getting all doctors");
+    console.log("Getting all doctors...");
     const doctors = await doctorModel.find({});
     res.json(doctors);
 });
@@ -22,3 +22,4 @@ export const getDoctorById = asyncHandler(async(req, res) => {
         throw new Error('Doctor not found');
     }
 });
+

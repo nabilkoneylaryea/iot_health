@@ -1,52 +1,51 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import asyncHandler from 'express-async-handler';
 import patientRouter from './server/routes/patientRouter.js';
 import doctorRouter from './server/routes/doctorRouter.js';
-// import cors from 'cors';
+// import asyncHandler from 'express-async-handler';
+// import bodyParser from 'body-parser';
 
 /*
  * Database name: Users
  * Collection 1: doctors
  * Collection 2: patients
  */
-const DB = "mongodb+srv://admin:admin@cluster0.bdcd0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const DB = "mongodb+srv://admin:admin@cluster0.bdcd0.mongodb.net/Users?retryWrites=true&w=majority";
+const OPTIONS = {
+  serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+  socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity,
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+
+};
 const PORT = process.env.PORT || 5000;
 
-const server = express();
-const router = express.Router();
-
-// var corsOptions = {
-//   origin: "http://localhost:8081"
-// };
-// server.use(cors(corsOptions));
-
-// parse requests of content-type - application/json
-server.use(bodyParser.json());
-// parse requests of content-type - application/x-www-form-urlencoded
-server.use(bodyParser.urlencoded({ extended: true }));
-
-// server.get('/', function (req, res) {
-//   res.send('Hello World!')
-// })
-
-// routers
-server.use('/api/patients', patientRouter);
-server.use('/api/doctors', doctorRouter);
-
 // connect database
-mongoose.connect(DB, {})
+mongoose.connect(DB, OPTIONS)
   .then(() => {
-    console.log("Starting DB");
-    // listen for requests on previously specified PORT
+    console.log("Connecting to DB...");
+
+    // server and routes
+    const server = express();
+    // parse requests of content-type - application/json
+    // server.use(bodyParser.json());
+    // parse requests of content-type - application/x-www-form-urlencoded
+    // server.use(bodyParser.urlencoded({ extended: true }));
+    server.use(express.json());
+    server.use('/api/patients', patientRouter);
+    server.use('/api/doctors', doctorRouter);
     server.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}.`);
+      console.log(`Server is running on port ${PORT}...`);
     });
   })
   .catch((err) => {
     console.log("Error: " + err);
   });
+
+// mongoose configurations
+// mongoose.set('bufferCommands', false);
+mongoose.set('debug', true);
+// mongoose.set('bufferTimeoutMS', 500);
 
 
 

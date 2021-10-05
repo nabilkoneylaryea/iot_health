@@ -1,10 +1,12 @@
 import mongoose from 'mongoose';
-const doctorSchema = new mongoose.Schema({
+
+const doctorSchema = mongoose.Schema({
     id: String,
     name: String,
     speciality: String,
     status: Number,
-    patientIDs: String
+    patientIDs: [String]
 });
 
-export default mongoose.model('doctor', doctorSchema);
+const doctorModel = mongoose.model('doctors', doctorSchema);
+export default doctorModel;
