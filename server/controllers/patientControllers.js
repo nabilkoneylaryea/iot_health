@@ -3,13 +3,15 @@ import asyncHandler from 'express-async-handler';
 
 //getPatients function to get all users
 export const getPatients = asyncHandler(async(req, res) => {
-    const patients = await patientModel.find({});
+    console.log("Getting all patients");
+    let patients =  await patientModel.find({});
     res.json(patients);
 })
 
 //getPatientsById function to retrieve user by id
 export const getPatientById  = asyncHandler(async(req, res) => {
-    const patient = await patient.findById(req.params.id);
+    console.log(`Looking for patient: ${req.params.id}`);
+    const patient = await patientModel.findById(req.params.id);
 
     //if user id match param id send user else throw error
     if(patient){

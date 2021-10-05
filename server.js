@@ -2,8 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import asyncHandler from 'express-async-handler';
-import patientsRouter from './server/routes/patientRouter.js';
-import doctorsRouter from './server/routes/doctorRouter.js';
+import patientRouter from './server/routes/patientRouter.js';
+import doctorRouter from './server/routes/doctorRouter.js';
 // import cors from 'cors';
 
 /*
@@ -27,26 +27,29 @@ server.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 server.use(bodyParser.urlencoded({ extended: true }));
 
-server.get('/', function (req, res) {
-  res.send('Hello World!')
-})
+// server.get('/', function (req, res) {
+//   res.send('Hello World!')
+// })
 
 // routers
-server.use('/patients', patientsRouter);
-server.use('/doctors', doctorsRouter);
+server.use('/api/patients', patientRouter);
+server.use('/api/doctors', doctorRouter);
 
 // connect database
 mongoose.connect(DB, {})
   .then(() => {
+    console.log("Starting DB");
     // listen for requests on previously specified PORT
     server.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}.`);
     });
-    console.log("Starting DB");
   })
   .catch((err) => {
     console.log("Error: " + err);
   });
+
+
+
 
 
 

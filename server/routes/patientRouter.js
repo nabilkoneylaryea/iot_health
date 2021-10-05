@@ -6,27 +6,8 @@ import express from 'express';
 import {getPatients, getPatientById} from '../controllers/patientControllers.js';
 const router = express.Router();
 
-// middleware that is specific to this router
-// router.use((req, res, next) => {
-//     console.log('Doing something on patients route ...');
-//     next();
-// });
+router.route('/').get(getPatients);
 
-// define the home page route
-// router.get('/', function (req, res) {
-//   res.send('Patients homepage')
-// })
-// // define the about route
-// router.get('/:id', function (req, res) {
-//   res.send('Patient id')
-// })
-
-router.route('/').get((req, res) => {
-    res.send('Patients homepage')
-});
-
-router.route('/:id').get((req, res) => {
-    res.send('Patient id')
-});
+router.route('/:id').get(getPatientById);
 
 export default router;

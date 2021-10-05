@@ -17,8 +17,8 @@ const router = express.Router();
 //   res.send('Doctor id')
 // })
 
-router.route('/').get();
+router.route('/').get(getDoctors);
 
-router.route('/:id').get();
+router.route('/:id').get(getDoctorById);
 
 export default router;
