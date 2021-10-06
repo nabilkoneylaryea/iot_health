@@ -8,5 +8,7 @@ const doctorSchema = new mongoose.Schema({
     patientIDs: [String]
 });
 
+doctorSchema.set('collection', 'doctors');
+
 const doctorModel = mongoose.model('doctor', doctorSchema);
 export default doctorModel;
