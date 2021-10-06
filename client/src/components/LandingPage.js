@@ -1,8 +1,9 @@
 import {React, useEffect, useState} from 'react';
-import { Container, Grid, Stack, Typography} from '@mui/material';
+import { Container, Grid, Stack, Typography, Link} from '@mui/material';
 import NameBasedAvatar from './NameBasedAvatar';
-// import Header from './Header';
+import Header from './Header';
 import axios from 'axios';
+import { Router } from 'react-router-dom';
 
 const LandingPage = () => {
     const [patients, setPatients] = useState([]);
@@ -24,7 +25,11 @@ const LandingPage = () => {
     });
     console.log(usersNames);
 
-    const userAvatars = usersNames.map((name) => {
+    const userAvatars = users.map((user) => {
+        let link = user.patientIDs ? "/doctors" : "/patients";
+        console.log(link);
+        link += `/${user._id}`;
+        console.log(link);
         return (
             <Grid item>
                 <Stack
@@ -33,9 +38,11 @@ const LandingPage = () => {
                     alignItems="center"
                     spacing={2}
                 >
-                    <NameBasedAvatar name={name}/>
+                    <Link href={link} underline="none">
+                        <NameBasedAvatar name={user.name}/>
+                    </Link>
                     <Typography>
-                        {name}
+                        {user.name}
                     </Typography>
                 </Stack>
             </Grid>
@@ -45,14 +52,16 @@ const LandingPage = () => {
 
     return (
         <>
-            {/* <Header /> */}
+            <Header />
             <Container>
                 <Grid
                     container
-                    columns={4}
-                    spacing={3}
+                    direction="row"
+                    rowSpacing={{ xs: 1}}
+                    columnSpacing={{ xs: 5}}
                     justifyContent="center"
                     alignItems="center"
+                    sx={{minHeight: '50vh'}}
                 >
                     {userAvatars}
                 </Grid>

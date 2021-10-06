@@ -6,7 +6,7 @@ import {
   // Switch,
   // Link,
   // Redirect
-} from "react-router-dom";
+} from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 // import Header from './components/Header';
 // import Container from '@mui/material/Container';
@@ -51,7 +51,7 @@ function App() {
 
   return(
     <div className="App">
-      <Router basename="http://localhost:3000/">
+      <Router>
         <Route exact path="/" component={LandingPage}/>
       </Router>
     </div>

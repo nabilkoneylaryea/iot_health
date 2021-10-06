@@ -21,22 +21,23 @@ function stringToColor(string) {
   return color;
 }
 
-function stringAvatar(name) {
+function stringAvatar(name, href) {
   return {
     sx: {
       bgcolor: stringToColor(name),
       fontWeight: 'heavy',
       fontSize: 50,
       width: 100,
-      height: 100
+      height: 100,
+      href: href
     },
     children: `${name.split(' ')[0][0]}`,
   };
 }
 
-const NameBasedAvatar = ({name}) => {
+const NameBasedAvatar = ({name, href}) => {
   return (
-    <Avatar {...stringAvatar(name)}/>
+    <Avatar {...stringAvatar(name, href)}/>
   );
 }
 
