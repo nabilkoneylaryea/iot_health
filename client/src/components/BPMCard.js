@@ -7,10 +7,6 @@ import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
 import TrendingFlatOutlinedIcon from '@mui/icons-material/TrendingFlatOutlined';
 import TrendingDownOutlinedIcon from '@mui/icons-material/TrendingDownOutlined';
 
-
-import AcUnitIcon from '@mui/icons-material/AcUnit';
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
-
 const BPMCard = ({bpm}) => {
   console.log(bpm);
   let bpmIcon = <></>;
