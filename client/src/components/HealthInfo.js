@@ -3,7 +3,9 @@ import { Grid, Typography } from '@mui/material';
 import TemperatureCard from './TemperatureCard';
 import BPMCard from './BPMCard';
 
-function HealthInfo({patient}) {
+function HealthInfo({patientID}) {
+    // TODO make a variable patients with an axios get request to the api
+    const patient = patients[patientID];
     return (
         <div>
             <Grid container direction="column" spacing={2}>

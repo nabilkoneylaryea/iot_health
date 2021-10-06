@@ -72,6 +72,8 @@ function PatientsDropdown(patients) {
 
 
 function PatientInfo({doctorID}) {
+
+    // TODO make a variable doctorsPatientsIDs with an axios get request to the api
     const doctorsPatientsIDs = doctors[doctorID].patientIDs;
     console.log(doctorsPatientsIDs);
     const doctorsPatients = doctorsPatientsIDs.map((patientID) => {

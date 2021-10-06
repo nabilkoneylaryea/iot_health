@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
+import Link from '@mui/material/Link';
 
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
@@ -17,14 +18,16 @@ export default function Header() {
       <AppBar position="static" sx={{bgcolor: 'success.dark'}}>
         <Toolbar>
           {/* Left side of header */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' }}}
-          >
-            Health Web App
-          </Typography>
+          <Link href="/" underline="none">
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: 'none', sm: 'block', color: 'white' }}}
+            >
+              Health Web App
+            </Typography>
+          </Link>
 
           {/* Whitespace */}
           <Box sx={{ flexGrow: 1 }} />

@@ -8,6 +8,8 @@ import {
   // Redirect
 } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
+import DoctorPage from './components/DoctorPage';
+import PatientPage from './components/PatientPage';
 // import Header from './components/Header';
 // import Container from '@mui/material/Container';
 // import PatientInfo from './components/PatientInfo';
@@ -53,6 +55,8 @@ function App() {
     <div className="App">
       <Router>
         <Route exact path="/" component={LandingPage}/>
+        <Route exact path="/patients/:id" component={PatientPage}/>
+        <Route exact path="/doctors/:id" component={DoctorPage}/>
       </Router>
     </div>
   );
