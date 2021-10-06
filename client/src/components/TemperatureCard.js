@@ -7,7 +7,7 @@ import AcUnitIcon from '@mui/icons-material/AcUnit';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 
 const TemperatureCard = ({temperature}) => {
-  console.log(temperature);
+  // console.log(temperature);
   let temperatureIcon = <></>;
   if(temperature < 98.6){
     temperatureIcon = <AcUnitIcon />;

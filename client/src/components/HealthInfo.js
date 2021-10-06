@@ -9,7 +9,7 @@ function HealthInfo({patientID}) {
     const [patient, setPatient] = useState({});
     const requestURI = `http://localhost:5000/api/patients/${patientID}`;
     useEffect(() => {
-        console.log("Request to API");
+        // console.log("Request to API");
         axios.get(requestURI)
             .then((response) => {setPatient(response.data)})
             .catch((error) => {console.log(error)});

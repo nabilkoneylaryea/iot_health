@@ -8,7 +8,7 @@ import TrendingFlatOutlinedIcon from '@mui/icons-material/TrendingFlatOutlined';
 import TrendingDownOutlinedIcon from '@mui/icons-material/TrendingDownOutlined';
 
 const BPMCard = ({bpm}) => {
-  console.log(bpm);
+  // console.log(bpm);
   let bpmIcon = <></>;
   if(bpm < 90){
     bpmIcon = <>Slow<TrendingDownOutlinedIcon /></>;
