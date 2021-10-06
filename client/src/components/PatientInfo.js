@@ -8,18 +8,18 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import HealthInfo from '../components/HealthInfo';
 
-import patients from '../patients';
+// import patients from '../patients';
 
-function PatientsDropdown(patients) {
-  const [expanded, setExpanded] = React.useState(false);
+const PatientsDropdown = (patients) => {
+  console.log("Patients dropdown");
+  const [expanded, setExpanded] = useState(false);
 
   // TODO: look up how this doubel arrow function thing works
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
   
-  let dropdown = [];
-  dropdown = patients.map((patient) => {
+  const dropdown = patients.map((patient) => {
 
     return (<Accordion 
         key={patient.name}
@@ -59,7 +59,7 @@ function PatientsDropdown(patients) {
 
         <AccordionDetails>
           <Typography>
-            <HealthInfo patient={patient}/>
+            <HealthInfo patientID={patient._id}/>
           </Typography>
         </AccordionDetails>
     </Accordion>);
@@ -70,32 +70,32 @@ function PatientsDropdown(patients) {
   );
 }
 
-function PatientInfo({doctorID}) {
-
-    const [doctor, setDoctor] = useState();
+const PatientInfo = ({doctorID}) => {
+    console.log("Patient info");
+    const [patients, setPatients] = useState([]);
+    const [doctor, setDoctor] = useState({});
+    
+    const doctorRequestURI = `http://localhost:5000/api/doctors/${doctorID}`;
+    const patientsRequestURI = `http://localhost:5000/api/doctors/${doctorID}/patients`;
     useEffect(() => {
-        axios.get(`/api/doctors/${doctorID}`)
-            .then((response) => {setDoctor(response.data)})
+        console.log("Request to API");
+        axios.get(doctorRequestURI)
+          .then((response) => {setDoctor(response.data)})
+          .catch((error) => {console.log(error)});
+        axios.get(patientsRequestURI)
+            .then((response) => {setPatients(response.data)})
             .catch((error) => {console.log(error)});
     });
 
-    const doctorsPatientsIDs = doctor.patientIDs;
-    console.log(doctorsPatientsIDs);
-    const doctorsPatients = doctorsPatientsIDs.map((patientID) => {
-        return(
-            patients[patientID]
-        );
-    });
-    console.log(doctorsPatients);
     return (
         <div>
             <Typography
                 gutterBottom
                 variant="h3"
             >
-                My Patients
+                {doctor.name}'s Patients
             </Typography>
-            <>{PatientsDropdown(doctorsPatients)}</>
+            <>{PatientsDropdown(patients)}</>
         </div>
     )
 }

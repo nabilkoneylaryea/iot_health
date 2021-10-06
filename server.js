@@ -57,9 +57,13 @@ server.get('/api/doctors', asyncHandler(async(req, res) => {
 server.get('/api/doctors/:id', asyncHandler(async(req, res) => {
   res.json(await doctorModel.findById(req.params.id));
 }));
-// server.get('/api/doctors/:id/patients', asyncHandler(async(req, res) => {
-//   res.json(await patientModel.find({_id: {$in: doctorModel.findById(req.params.id).patientIDs}}));
-// }));
+server.get('/api/doctors/:id/patients', asyncHandler(async(req, res) => {
+  await doctorModel.findById(req.params.id)
+    .then( asyncHandler( async(doctor) => {
+      res.json(await patientModel.find({_id: {$in: doctor.patientIDs}}));
+    }))
+    .catch((error) => {console.log(error)});
+}));
 
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}...`);
