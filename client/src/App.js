@@ -51,8 +51,8 @@ function App() {
 
   return(
     <div className="App">
-      <Router>
-        <Route path="/" component={LandingPage}/>
+      <Router basename="http://localhost:3000/">
+        <Route exact path="/" component={LandingPage}/>
       </Router>
     </div>
   );

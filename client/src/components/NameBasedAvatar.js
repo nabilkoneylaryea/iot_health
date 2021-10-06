@@ -25,13 +25,19 @@ function stringAvatar(name) {
   return {
     sx: {
       bgcolor: stringToColor(name),
+      fontWeight: 'heavy',
+      fontSize: 50,
+      width: 100,
+      height: 100
     },
-    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+    children: `${name.split(' ')[0][0]}`,
   };
 }
 
-export default function nameBasedAvatar({name}) {
+const NameBasedAvatar = ({name}) => {
   return (
-    <Avatar {...stringAvatar(name)} />
+    <Avatar {...stringAvatar(name)}/>
   );
 }
+
+export default NameBasedAvatar;

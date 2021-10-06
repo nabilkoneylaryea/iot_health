@@ -2,6 +2,7 @@ import express from 'express';
 import asyncHandler from 'express-async-handler';
 import mongoose from 'mongoose';
 import connectDB from './db.js';
+import cors from 'cors';
 
 // configuration
 const server = express();
@@ -28,7 +29,7 @@ const patientSchema = new mongoose.Schema({
   bpm: Number,
   hasFallen: Boolean
 });
-patientSchema.set('collection', 'doctors');
+patientSchema.set('collection', 'patients');
 const patientModel = mongoose.model('patient', patientSchema);
 
 // doctorSchema
@@ -43,6 +44,7 @@ const doctorModel = mongoose.model('doctor', doctorSchema);
 
 // server and routes
 server.use(express.json());
+server.use(cors());
 server.get('/api/patients', asyncHandler(async(req, res) => {
   res.json(await patientModel.find());
 }));
