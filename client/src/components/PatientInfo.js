@@ -1,4 +1,5 @@
-import * as React from 'react';
+import {React, useState, useEffect} from 'react';
+import axios from 'axios';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -70,11 +71,16 @@ function PatientsDropdown(patients) {
   );
 }
 
-
 function PatientInfo({doctorID}) {
 
-    // TODO make a variable doctorsPatientsIDs with an axios get request to the api
-    const doctorsPatientsIDs = doctors[doctorID].patientIDs;
+    const [doctor, setDoctor] = useState();
+    useEffect(() => {
+        axios.get(`/api/doctors/${doctorID}`)
+            .then((response) => {setDoctor(response.data)})
+            .catch((error) => {console.log(error)});
+    });
+
+    const doctorsPatientsIDs = doctor.patientIDs;
     console.log(doctorsPatientsIDs);
     const doctorsPatients = doctorsPatientsIDs.map((patientID) => {
         return(

@@ -1,11 +1,20 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import { Grid, Typography } from '@mui/material';
 import TemperatureCard from './TemperatureCard';
 import BPMCard from './BPMCard';
+import axios from 'axios';
 
 function HealthInfo({patientID}) {
     // TODO make a variable patients with an axios get request to the api
-    const patient = patients[patientID];
+    const [patient, setPatient] = useState({});
+    const requestURI = `http://localhost:5000/api/patients/${patientID}`;
+    useEffect(() => {
+        console.log("Request to API");
+        axios.get(requestURI)
+            .then((response) => {setPatient(response.data)})
+            .catch((error) => {console.log(error)});
+    });
+
     return (
         <div>
             <Grid container direction="column" spacing={2}>
@@ -25,8 +34,6 @@ function HealthInfo({patientID}) {
                 </Grid>
             </Grid>
             </Grid>
-            
-            
         </div>
     )
 }

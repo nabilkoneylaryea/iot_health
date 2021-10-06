@@ -19,17 +19,17 @@ const LandingPage = () => {
     });
 
     const users = [...patients,...doctors];
-    console.log(users);
+    // console.log(users);
     const usersNames = users.map((user) => {
         return user.name;
     });
-    console.log(usersNames);
+    // console.log(usersNames);
 
     const userAvatars = users.map((user) => {
         let link = user.patientIDs ? "/doctors" : "/patients";
-        console.log(link);
+        // console.log(link);
         link += `/${user._id}`;
-        console.log(link);
+        // console.log(link);
         return (
             <Grid item>
                 <Stack
@@ -48,7 +48,7 @@ const LandingPage = () => {
             </Grid>
         );
     });
-    console.log(userAvatars);
+    // console.log(userAvatars);
 
     return (
         <>

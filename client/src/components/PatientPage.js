@@ -5,12 +5,12 @@ import HealthInfo from './HealthInfo';
 
 const PatientPage = () => {
     const path = window.location.pathname.split('/');
-    const id = path[path.length]
+    const id = path[path.length - 1];
     return (
         <div>
             <Header />
             <Container>
-                <HealthInfo />
+                <HealthInfo patientID={id}/>
             </Container>
         </div>
     )
