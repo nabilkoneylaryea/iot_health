@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const doctorSchema = mongoose.Schema({
+const doctorSchema = new mongoose.Schema({
     id: String,
     name: String,
     speciality: String,
@@ -8,5 +8,5 @@ const doctorSchema = mongoose.Schema({
     patientIDs: [String]
 });
 
-const doctorModel = mongoose.model('doctors', doctorSchema);
+const doctorModel = mongoose.model('doctor', doctorSchema);
 export default doctorModel;
