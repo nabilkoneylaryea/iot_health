@@ -9,7 +9,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import HealthInfo from '../components/HealthInfo';
 
 import patients from '../patients';
-import doctors from '../doctors';
 
 function PatientsDropdown(patients) {
   const [expanded, setExpanded] = React.useState(false);

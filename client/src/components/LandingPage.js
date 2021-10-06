@@ -3,7 +3,6 @@ import { Container, Grid, Stack, Typography, Link} from '@mui/material';
 import NameBasedAvatar from './NameBasedAvatar';
 import Header from './Header';
 import axios from 'axios';
-import { Router } from 'react-router-dom';
 
 const LandingPage = () => {
     const [patients, setPatients] = useState([]);
@@ -19,12 +18,6 @@ const LandingPage = () => {
     });
 
     const users = [...patients,...doctors];
-    // console.log(users);
-    const usersNames = users.map((user) => {
-        return user.name;
-    });
-    // console.log(usersNames);
-
     const userAvatars = users.map((user) => {
         let link = user.patientIDs ? "/doctors" : "/patients";
         // console.log(link);
