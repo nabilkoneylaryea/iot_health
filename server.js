@@ -13,7 +13,6 @@ connectDB();
 // schemas and models
 // patient schema
 const patientSchema = new mongoose.Schema({
-  id: String,
   name: String,
   age: Number,
   weight: Number,
@@ -34,7 +33,6 @@ const patientModel = mongoose.model('patient', patientSchema);
 
 // doctorSchema
 const doctorSchema = new mongoose.Schema({
-  id: String,
   name: String,
   speciality: String,
   status: Number,
